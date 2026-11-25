@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ذاكرة | فحص مبكر لأعراض الزهايمر</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--panel:#060b16;--line:#12233f;--blue:#1e6bff;--cyan:#38b6ff;--or:#ff8a1f;--tx:#eaf1ff;--mut:#8ea3c4;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"IBM Plex Sans Arabic",Tahoma,Arial,sans-serif;line-height:1.8;background-image:radial-gradient(60rem 30rem at 85% -10%,#0b2a6b55,transparent),radial-gradient(40rem 25rem at 0% 40%,#1e6bff14,transparent)}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.25rem}
+.logo i{width:12px;height:12px;border-radius:50%;background:var(--or);box-shadow:0 0 14px var(--or)}
+.tag{color:var(--mut);font-size:.85rem}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;padding:30px 0 50px}
+h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.25;margin:0 0 14px;font-weight:700;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--cyan);text-shadow:0 0 28px #1e6bffaa}
+.lead{color:var(--mut);max-width:34em;margin:0 0 24px}
+.btn{font:inherit;font-weight:600;border:0;border-radius:12px;padding:13px 26px;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--blue),var(--cyan));box-shadow:0 0 0 1px #5aa2ff55,0 8px 30px #1e6bff55;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 0 1px #8bc0ff88,0 12px 36px #1e6bff88}
+.btn.or{background:linear-gradient(135deg,#ff6a00,var(--or));box-shadow:0 8px 28px #ff8a1f44}
+.btn.ghost{background:transparent;color:var(--tx);box-shadow:inset 0 0 0 1px var(--line)}
+.btn[disabled]{opacity:.35;cursor:not-allowed;transform:none}
+:focus-visible{outline:2px solid var(--or);outline-offset:3px}
+.facts{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;color:var(--mut);font-size:.9rem}
+.facts span{padding-inline-start:12px;border-inline-start:2px solid var(--or)}
+.orb{aspect-ratio:1;max-width:320px;margin:auto;width:100%}
+.orb svg{width:100%;height:100%;overflow:visible}
+.r1{transform-origin:150px 150px;animation:spin 28s linear infinite}
+.r2{transform-origin:150px 150px;animation:spin 18s linear infinite reverse}
+.r3{transform-origin:150px 150px;animation:spin 9s linear infinite}
+.pulse{animation:pulse 3s ease-in-out infinite;transform-origin:150px 150px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{50%{opacity:.35;transform:scale(1.08)}}
+#test{display:none;padding-bottom:50px}
+.steps{display:flex;gap:6px;margin:10px 0 22px}
+.steps div{flex:1;font-size:.72rem;color:var(--mut);text-align:center}
+.steps b{display:block;height:4px;border-radius:4px;background:var(--line);margin-bottom:6px;transition:background .3s}
+.steps .on b{background:var(--blue);box-shadow:0 0 10px var(--blue)}
+.steps .on{color:var(--tx)}
+.steps .cur b{background:var(--or);box-shadow:0 0 10px var(--or)}
+.card{background:linear-gradient(180deg,#0a1426,var(--panel));border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 0 60px #1e6bff12}
+.card h2{margin:0 0 4px;font-size:1.5rem}
+.card p.sub{margin:0 0 20px;color:var(--mut)}
+.q{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.q span{flex:1}
+.yn{display:flex;gap:6px}
+.yn button,.chip{font:inherit;color:var(--mut);background:#0a1830;border:1px solid var(--line);border-radius:10px;padding:6px 16px;cursor:pointer;transition:.15s}
+.yn button.sel{color:#fff;border-color:var(--blue);background:#123c99}
+.yn button.sel.bad{border-color:var(--or);background:#6b3000}
+.chip.sel{color:#fff;border-color:var(--cyan);background:#123c99;box-shadow:0 0 16px #1e6bff66}
+label.f{display:block;margin:12px 0 4px;color:var(--mut);font-size:.9rem}
+select,input[type=text],textarea{width:100%;font:inherit;color:var(--tx);background:#050c1a;border:1px solid var(--line);border-radius:10px;padding:11px 12px}
+select:focus,input:focus,textarea:focus{border-color:var(--blue);outline:none;box-shadow:0 0 0 3px #1e6bff44}
+.words{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:26px 0}
+.words b{font-size:1.7rem;padding:10px 22px;border-radius:14px;border:1px solid var(--blue);background:#0a1c44;box-shadow:0 0 24px #1e6bff55}
+.bar{height:6px;border-radius:6px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--or),#ffc27a);transform-origin:right}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+.chip{text-align:center;padding:12px 6px;font-size:1.05rem}
+.timer{font-size:2.6rem;font-weight:700;color:var(--or);text-align:center;font-variant-numeric:tabular-nums;text-shadow:0 0 20px #ff8a1f66}
+.nav{display:flex;justify-content:space-between;margin-top:22px;gap:10px}
+.res{display:grid;grid-template-columns:240px 1fr;gap:26px;align-items:center}
+.ring{position:relative;width:220px;height:220px;margin:auto}
+.ring svg{transform:rotate(90deg) scaleX(-1)}
+.ring div{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.ring strong{font-size:3.4rem;line-height:1;font-weight:700}
+.ring small{color:var(--mut)}
+.lvl{display:inline-block;padding:4px 14px;border-radius:30px;font-weight:600;font-size:.9rem;margin-bottom:8px}
+.dom{margin:12px 0}
+.dom div.h{display:flex;justify-content:space-between;font-size:.92rem;margin-bottom:4px}
+.dom .bar{height:8px}.dom .bar i{transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.box{margin-top:20px;padding:16px 18px;border-radius:14px;border:1px solid var(--line);background:#050c1a}
+.box h3{margin:0 0 6px;font-size:1.05rem}
+.box ul{margin:0;padding-inline-start:20px;color:var(--mut)}
+.warn{border-color:#ff8a1f66;background:#1a0d00}
+.disc{margin-top:36px;padding:18px 0 34px;border-top:1px solid var(--line);color:var(--mut);font-size:.82rem}
+@media(max-width:700px){.hero,.res{grid-template-columns:1fr}.orb{max-width:220px;order:-1}.card{padding:18px}.q{flex-direction:column;align-items:stretch}.yn button{flex:1}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="logo"><i></i>ذاكرة</div><div class="tag">فحص أولي، وليس تشخيصًا طبيًا</div></header>
+
+<section class="hero" id="hero">
+<div>
+<h1>افحص ذاكرتك<br>وتفكيرك <em>مبكرًا</em></h1>
+<p class="lead">ستة اختبارات قصيرة تقيس الذاكرة والانتباه والتوجّه واللغة، مع تقرير مفصّل بنتائجك وتقييم لكل مجال. تستغرق نحو ٨ دقائق.</p>
+<button class="btn" id="go">ابدأ الفحص</button>
+<div class="facts"><span>٦ اختبارات</span><span>٨ دقائق</span><span>لا يُحفظ أي شيء من إجاباتك</span></div>
+</div>
+<div class="orb" aria-hidden="true">
+<svg viewBox="0 0 300 300">
+<defs><radialGradient id="g"><stop offset="0" stop-color="#1e6bff" stop-opacity=".55"/><stop offset="1" stop-color="#1e6bff" stop-opacity="0"/></radialGradient></defs>
+<circle class="pulse" cx="150" cy="150" r="120" fill="url(#g)"/>
+<g class="r1"><circle cx="150" cy="150" r="130" fill="none" stroke="#1e6bff" stroke-width="1.5" stroke-dasharray="3 9"/><circle cx="150" cy="20" r="6" fill="#ff8a1f"/></g>
+<g class="r2"><circle cx="150" cy="150" r="98" fill="none" stroke="#38b6ff" stroke-width="1.5" stroke-dasharray="40 14"/><circle cx="248" cy="150" r="4" fill="#38b6ff"/></g>
+<g class="r3"><circle cx="150" cy="150" r="64" fill="none" stroke="#1e6bff" stroke-width="2" stroke-dasharray="90 30"/></g>
+<circle cx="150" cy="150" r="30" fill="#000" stroke="#38b6ff" stroke-width="2"/>
+<circle cx="150" cy="150" r="9" fill="#ff8a1f"/>
+</svg>
+</div>
+</section>
+
+<section id="test">
+<div class="steps" id="steps"></div>
+<div class="card" id="stage"></div>
+</section>
+
+<footer class="disc">هذا الموقع أداة توعوية للفحص الأولي ولا يُغني عن التقييم الطبي. لا يمكنه تشخيص الزهايمر أو نفيه. إذا لاحظت تغيّرًا مستمرًا في الذاكرة أو السلوك لديك أو لدى أحد أقاربك، راجع طبيب الأعصاب أو طبيب الأسرة.</footer>
+</div>
+
+<script>
+var $=function(s){return document.querySelector(s)};
+var POOL=['كرسي','قمر','نخلة','مفتاح','بحر','ساعة','تفاحة','جسر','قلم','سحابة','حصان','نافذة','كتاب','شمس','جبل','وردة','سيارة','قهوة','باب','طائر'];
+var AD=['مشاكل في الحكم على الأمور، كقرارات مالية غير مناسبة','قلّة الاهتمام بالهوايات والأنشطة المعتادة','تكرار نفس الأسئلة أو القصص أو العبارات','صعوبة في تعلّم استخدام جهاز أو أداة (هاتف، تلفاز، آلة)','نسيان الشهر أو السنة الحالية','صعوبة في إدارة الأمور المالية (الفواتير، الحسابات)','صعوبة في تذكّر المواعيد','مشاكل يومية مستمرة في التفكير والذاكرة'];
+var MON=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+var DAY=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+var SEA=['الشتاء','الربيع','الصيف','الخريف'];
+var NAMES=['الأعراض','التوجّه','الحفظ','الانتباه','الطلاقة','التذكّر'];
+var step=0,S,T;
+function shuffle(a){return a.slice().sort(function(){return Math.random()-.5})}
+function clr(){clearInterval(T)}
+function digits(s){return String(s).replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)})}
+function start(){S={ad:[],ori:[],target:shuffle(POOL).slice(0,5),att:[],flu:0,rec:[]};step=0;$('#hero').style.display='none';$('#test').style.display='block';show();window.scrollTo(0,0)}
+function bar(){$('#steps').innerHTML=NAMES.map(function(n,i){return '<div class="'+(i<step?'on':i==step?'cur':'')+'"><b></b>'+n+'</div>'}).join('')}
+function nav(ok,label){return '<div class="nav"><span></span><button class="btn" id="nx" '+(ok?'':'disabled')+'>'+(label||'التالي')+'</button></div>'}
+function show(){clr();bar();var st=$('#stage');
+if(step==0){
+st.innerHTML='<h2>الأعراض اليومية</h2><p class="sub">هل لاحظت تغيّرًا خلال السنوات الأخيرة في أي مما يلي؟ يمكن أن يجيب قريب يعرفك جيدًا.</p>'+AD.map(function(q,i){return '<div class="q"><span>'+q+'</span><div class="yn"><button data-i="'+i+'" data-v="1" class="bad">نعم</button><button data-i="'+i+'" data-v="0">لا</button></div></div>'}).join('')+nav(false);
+st.querySelectorAll('.yn button').forEach(function(b){b.onclick=function(){var i=+b.dataset.i;S.ad[i]=+b.dataset.v;b.parentNode.querySelectorAll('button').forEach(function(x){x.className=x==b?'sel'+(b.dataset.v==1?' bad':''):(x.dataset.v==1?'bad':'')});$('#nx').disabled=S.ad.filter(function(v){return v!==undefined}).length<8}});
+$('#nx').onclick=function(){step++;show()}}
+else if(step==1){
+var y=new Date().getFullYear(),yo='<option value="">اختر</option>';for(var k=y-4;k<=y+1;k++)yo+='<option>'+k+'</option>';
+function sel(id,l,arr){return '<label class="f" for="'+id+'">'+l+'</label><select id="'+id+'"><option value="">اختر</option>'+arr.map(function(a,i){return '<option value="'+i+'">'+a+'</option>'}).join('')+'</select>'}
+st.innerHTML='<h2>التوجّه الزمني</h2><p class="sub">أجب من ذاكرتك دون النظر إلى هاتف أو تقويم.</p><label class="f" for="o0">ما هي السنة الحالية؟</label><select id="o0">'+yo+'</select>'+sel('o1','ما هو الشهر الحالي؟',MON)+sel('o2','ما هو اليوم اليوم؟',DAY)+sel('o3','ما هو الفصل الحالي؟',SEA)+nav(false);
+var chk=function(){$('#nx').disabled=[0,1,2,3].some(function(i){return $('#o'+i).value===''})};
+[0,1,2,3].forEach(function(i){$('#o'+i).onchange=chk});
+$('#nx').onclick=function(){var d=new Date(),m=d.getMonth(),se=m==11||m<2?0:m<5?1:m<8?2:3;S.ori=[+$('#o0').value==d.getFullYear(),+$('#o1').value==m,+$('#o2').value==d.getDay(),+$('#o3').value==se];step++;show()}}
+else if(step==2){
+st.innerHTML='<h2>احفظ هذه الكلمات</h2><p class="sub">تذكّرها جيدًا، ستُسأل عنها بعد قليل.</p><div class="words">'+S.target.map(function(w){return '<b>'+w+'</b>'}).join('')+'</div><div class="bar"><i id="pb"></i></div><p class="sub" style="margin-top:10px;text-align:center">ستنتقل تلقائيًا بعد <span id="cd">12</span> ثانية</p>';
+var n=12,pb=$('#pb');pb.style.transition='transform 12s linear';requestAnimationFrame(function(){pb.style.transform='scaleX(0)'});
+T=setInterval(function(){n--;$('#cd').textContent=n;if(n<=0){step++;show()}},1000)}
+else if(step==3){
+st.innerHTML='<h2>الانتباه والحساب</h2><p class="sub">ابدأ من ١٠٠ واطرح ٧ في كل مرة. اكتب الأرقام الثلاثة الأولى.</p><label class="f" for="a0">١٠٠ − ٧ =</label><input type="text" id="a0" inputmode="numeric" autocomplete="off"><label class="f" for="a1">ثم اطرح ٧ مرة أخرى</label><input type="text" id="a1" inputmode="numeric" autocomplete="off"><label class="f" for="a2">ومرة أخيرة</label><input type="text" id="a2" inputmode="numeric" autocomplete="off">'+nav(true);
+$('#nx').onclick=function(){S.att=[93,86,79].map(function(v,i){return +digits($('#a'+i).value.trim())==v});step++;show()}}
+else if(step==4){
+st.innerHTML='<h2>الطلاقة اللفظية</h2><p class="sub">اكتب أكبر عدد ممكن من أسماء الحيوانات خلال ٣٠ ثانية، افصل بينها بمسافة أو فاصلة.</p><div class="timer" id="tm">30</div><textarea id="fl" rows="4" disabled placeholder="اضغط ابدأ ثم اكتب بسرعة"></textarea><div class="nav"><button class="btn or" id="st">ابدأ الآن</button><button class="btn" id="nx" disabled>التالي</button></div>';
+function fin(){clr();var f=$('#fl');f.disabled=true;var w={};f.value.split(/[\s,،\n.]+/).forEach(function(x){if(x.trim())w[x.trim()]=1});S.flu=Object.keys(w).length;$('#nx').disabled=false}
+$('#st').onclick=function(){this.disabled=true;var f=$('#fl');f.disabled=false;f.focus();var n=30;T=setInterval(function(){n--;$('#tm').textContent=n;if(n<=0)fin()},1000)};
+$('#nx').onclick=function(){step++;show()};
+$('#fl').addEventListener('keydown',function(){})}
+else if(step==5){
+var all=shuffle(S.target.concat(shuffle(POOL.filter(function(w){return S.target.indexOf(w)<0})).slice(0,7)));S.rec=[];
+st.innerHTML='<h2>التذكّر</h2><p class="sub">اختر الكلمات الخمس التي ظهرت لك قبل قليل. اختر خمس كلمات فقط.</p><div class="grid">'+all.map(function(w){return '<button class="chip" data-w="'+w+'">'+w+'</button>'}).join('')+'</div>'+nav(false,'اعرض النتيجة');
+st.querySelectorAll('.chip').forEach(function(c){c.onclick=function(){var i=S.rec.indexOf(c.dataset.w);if(i>=0){S.rec.splice(i,1);c.classList.remove('sel')}else if(S.rec.length<5){S.rec.push(c.dataset.w);c.classList.add('sel')}$('#nx').disabled=S.rec.length!=5}});
+$('#nx').onclick=result}}
+function result(){clr();step=6;bar();document.querySelectorAll('#steps div').forEach(function(d){d.className='on'});
+var ad=S.ad.reduce(function(a,b){return a+b},0),ok=function(a){return a.filter(Boolean).length};
+var hit=S.rec.filter(function(w){return S.target.indexOf(w)>=0}).length,miss=5-hit;
+var D=[['الأعراض اليومية',Math.round((8-ad)/8*25),25],['التوجّه الزمني',ok(S.ori)*5,20],['الذاكرة المؤجلة',Math.max(0,hit-miss)*5,25],['الانتباه والحساب',ok(S.att)*5,15],['الطلاقة اللفظية',Math.min(15,Math.round(S.flu/12*15)),15]];
+var tot=D.reduce(function(a,d){return a+d[1]},0);
+var L=tot>=80?['أداء ضمن المعدّل الطبيعي','#0b3a1f','#5dff9a',['حافظ على نشاطك البدني (٣٠ دقيقة مشي معظم أيام الأسبوع)','نم من ٧ إلى ٨ ساعات وتغذَّ بنمط متوسطي','ابقَ نشطًا ذهنيًا واجتماعيًا: قراءة، ألعاب فكرية، لقاءات','كرّر الفحص كل ٦ إلى ١٢ شهرًا لمتابعة أي تغيّر']]:tot>=60?['ملاحظات بسيطة تستحق المتابعة','#3d2600','#ffb347',['كرّر الفحص بعد ٣ إلى ٦ أشهر في ظرف هادئ ونوم كافٍ','قد يؤثر القلق وقلّة النوم والاكتئاب على الأداء، فاذكر ذلك لطبيبك','افحص ضغط الدم والسكر والغدة الدرقية وفيتامين ب١٢ عند طبيبك','نشّط عقلك ومارس الرياضة وابقَ على تواصل اجتماعي']]:['يُنصح بمراجعة طبيب مختص','#3d1200','#ff8a1f',['احجز موعدًا مع طبيب أعصاب أو طب الشيخوخة في أقرب وقت','اصطحب معك قريبًا يعرفك جيدًا ليصف التغيّرات التي لاحظها','دوّن أمثلة محددة: متى بدأ النسيان وكيف يؤثر على حياتك اليومية','هناك أسباب كثيرة قابلة للعلاج لتراجع الذاكرة، والكشف المبكر يفيد']];
+if(ad>=2&&tot>=80){L[0]='أداء جيد مع تنبيه في الأعراض اليومية';L[1]='#3d2600';L[2]='#ffb347'}var C=2*Math.PI*90;
+$('#stage').innerHTML='<div class="res"><div class="ring"><svg width="220" height="220" viewBox="0 0 220 220"><circle cx="110" cy="110" r="90" fill="none" stroke="#12233f" stroke-width="14"/><circle id="rg" cx="110" cy="110" r="90" fill="none" stroke="'+(tot>=60?'#38b6ff':'#ff8a1f')+'" stroke-width="14" stroke-linecap="round" stroke-dasharray="'+C+'" stroke-dashoffset="'+C+'" style="transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 0 8px #1e6bff)"/></svg><div><strong>'+tot+'</strong><small>من ١٠٠</small></div></div><div><span class="lvl" style="background:'+L[1]+';color:'+L[2]+'">'+L[0]+'</span><h2 style="margin:0 0 10px">نتيجة الفحص</h2>'+D.map(function(d){var p=d[1]/d[2];return '<div class="dom"><div class="h"><span>'+d[0]+'</span><span dir="ltr">'+d[1]+' / '+d[2]+'</span></div><div class="bar"><i style="transform:scaleX(0);background:'+(p<.6?'var(--or)':'linear-gradient(90deg,var(--blue),var(--cyan))')+'" data-p="'+p+'"></i></div></div>'}).join('')+'</div></div>'+(ad>=2?'<div class="box warn"><h3>تنبيه في الأعراض اليومية</h3><p style="margin:0;color:var(--mut)">أجبت بـ نعم على '+ad+' من ٨ أسئلة. هذه النتيجة تتجاوز حد التنبيه المعتمد في هذا النوع من الاستبيانات (٢ أو أكثر)، وتستحق نقاشًا مع الطبيب.</p></div>':'')+'<div class="box"><h3>التوصيات</h3><ul>'+L[3].map(function(t){return '<li>'+t+'</li>'}).join('')+'</ul></div><div class="box"><h3>تفاصيل الأداء</h3><p style="margin:0;color:var(--mut)">تذكّرت '+hit+' من ٥ كلمات، وأجبت بدقة عن '+ok(S.ori)+' من ٤ أسئلة توجّه، وكتبت '+S.flu+' اسم حيوان في ٣٠ ثانية.</p></div><div class="nav"><button class="btn ghost" id="again">أعد الفحص</button><span></span></div>';
+$('#again').onclick=start;
+requestAnimationFrame(function(){requestAnimationFrame(function(){$('#rg').style.strokeDashoffset=C*(1-tot/100);document.querySelectorAll('.dom i').forEach(function(i){i.style.transform='scaleX('+i.dataset.p+')'})})});
+window.scrollTo(0,0)}
+$('#go').onclick=start;
+</script>
+</body>
+</html>
